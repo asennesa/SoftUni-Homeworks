@@ -7,11 +7,11 @@ public class ExtractFile {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String text = reader.readLine();
 
-        String firstWord = text.substring(text.lastIndexOf('\\')+1,text.lastIndexOf('.'));
-        String secondWord = text.substring(text.lastIndexOf('.')+1);
-        System.out.println(String.format("File name: %s",firstWord));
-        System.out.println(String.format("File extension: %s",secondWord));
+        String fileName = text.substring(text.lastIndexOf("\\") + 1, text.lastIndexOf("."));
+        String fileExtension = text.substring(text.lastIndexOf(".") + 1);
 
+        System.out.println(String.format("File name: %s", fileName));
+        System.out.println(String.format("File extension: %s", fileExtension));
 
 
     }
