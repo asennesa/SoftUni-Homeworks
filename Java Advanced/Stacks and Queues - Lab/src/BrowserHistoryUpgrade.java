@@ -12,18 +12,31 @@ public class BrowserHistoryUpgrade {
 
         while(!"home".equalsIgnoreCase(input=reader.readLine())){
 
-            if(!input.equalsIgnoreCase("Back")){
+            if(!input.equalsIgnoreCase("Back")&& !input.equalsIgnoreCase("forward")){
                 stackHere.push(input);
                 System.out.println(input);
-            }else{
+            }else if (input.equalsIgnoreCase("Back")){
                 if(stackHere.size() > 1){
-                    queue.offer(stackHere.pop());
+                    queue.offer(stackHere.peek());
+                    stackHere.pop();
                     System.out.println(stackHere.peek());
 
                 }else {
                     System.out.println("no previous URLs");
                 }
             }
+            if (input.equalsIgnoreCase("forward")){
+
+                if(queue.isEmpty()){
+                    System.out.println("no next URLs");
+                }else{
+                    stackHere.push(queue.peek());
+                    System.out.println(queue.poll());
+                }
+            }else if (!input.equalsIgnoreCase("back") && !input.equalsIgnoreCase("forward")){
+                queue.clear();
+            }
+
 
 
 
