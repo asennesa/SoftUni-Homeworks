@@ -17,7 +17,7 @@ public class BrowserHistoryUpgrade {
                 System.out.println(input);
             }else if (input.equalsIgnoreCase("Back")){
                 if(stackHere.size() > 1){
-                    queue.offer(stackHere.peek());
+                    queue.addFirst(stackHere.peek());
                     stackHere.pop();
                     System.out.println(stackHere.peek());
 
