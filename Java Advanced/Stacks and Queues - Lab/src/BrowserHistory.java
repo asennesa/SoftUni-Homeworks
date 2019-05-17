@@ -7,17 +7,17 @@ public class BrowserHistory {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
-        ArrayDeque<String> stackHere = new ArrayDeque<>();
+        ArrayDeque<String> stack = new ArrayDeque<>();
 
         while (!"home".equalsIgnoreCase(input = reader.readLine())) {
 
             if (!input.equalsIgnoreCase("Back")) {
-                stackHere.push(input);
+                stack.push(input);
                 System.out.println(input);
             } else {
-                if (stackHere.size() > 1) {
-                    stackHere.pop();
-                    System.out.println(stackHere.peek());
+                if (stack.size() > 1) {
+                    stack.pop();
+                    System.out.println(stack.peek());
 
                 } else {
                     System.out.println("no previous URLs");

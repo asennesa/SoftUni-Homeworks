@@ -10,19 +10,19 @@ public class HotPotato {
         String[] children = reader.readLine().split("\\s+");
         int n  = Integer.valueOf(reader.readLine());
 
-        ArrayDeque<String>queue = new ArrayDeque<>();
+        ArrayDeque<String>queueHere = new ArrayDeque<>();
         for (String child : children)
-            queue.offer(child);
+            queueHere.offer(child);
 
-        while (queue.size() > 1) {
+        while (queueHere.size() > 1) {
             //Б реално време вътриш топката между играчите .
             for (int i = 1; i < n; i++)
-                queue.offer(queue.poll());
+                queueHere.offer(queueHere.poll());
 
-            System.out.println("Removed " + queue.poll());
+            System.out.println("Removed " + queueHere.poll());
         }
 
-        System.out.println("Last is " + queue.poll());
+        System.out.println("Last is " + queueHere.poll());
 
 
     }

@@ -9,22 +9,22 @@ public class MathPotato {
         String[] children = reader.readLine().split("\\s+");
         int n  = Integer.valueOf(reader.readLine());
 
-        ArrayDeque<String> queue = new ArrayDeque<>();
+        ArrayDeque<String> queueHere = new ArrayDeque<>();
         for (String child : children)
-            queue.offer(child);
+            queueHere.offer(child);
         int cycle = 1;
-        while (queue.size() > 1) {
+        while (queueHere.size() > 1) {
             for (int i = 1; i < n; i++)
-                queue.offer(queue.poll());
+                queueHere.offer(queueHere.poll());
 
             if (isPrime(cycle)){
-                System.out.println("Prime " + queue.peek());
+                System.out.println("Prime " + queueHere.peek());
             } else {
-                System.out.println("Removed " + queue.poll());
+                System.out.println("Removed " + queueHere.poll());
             }
             cycle++;
         }
-        System.out.println("Last is " + queue.poll());
+        System.out.println("Last is " + queueHere.poll());
 
 
 

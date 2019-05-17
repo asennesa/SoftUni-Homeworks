@@ -8,16 +8,16 @@ public class DecimaltoBinaryConverter {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         int decimal = Integer.parseInt(reader.readLine());
-        ArrayDeque<Integer> stack = new ArrayDeque<>();
+        ArrayDeque<Integer> stackHere = new ArrayDeque<>();
         if (decimal == 0) {
             System.out.println("0");
         } else {
             while (decimal != 0) {
-                stack.push(decimal % 2);
+                stackHere.push(decimal % 2);
                 decimal /= 2;
             }
-            while (!stack.isEmpty()) {
-                System.out.print(stack.pop());
+            while (!stackHere.isEmpty()) {
+                System.out.print(stackHere.pop());
             }
         }
     }

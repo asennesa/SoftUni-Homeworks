@@ -8,7 +8,7 @@ public class BrowserHistoryUpgrade {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String input = "";
         ArrayDeque<String> stackHere = new ArrayDeque<>();
-        ArrayDeque<String> queue = new ArrayDeque<>();
+        ArrayDeque<String> queueHere = new ArrayDeque<>();
 
         while(!"home".equalsIgnoreCase(input=reader.readLine())){
 
@@ -17,7 +17,7 @@ public class BrowserHistoryUpgrade {
                 System.out.println(input);
             }else if (input.equalsIgnoreCase("Back")){
                 if(stackHere.size() > 1){
-                    queue.addFirst(stackHere.peek());
+                    queueHere.addFirst(stackHere.peek());
                     stackHere.pop();
                     System.out.println(stackHere.peek());
 
@@ -27,14 +27,14 @@ public class BrowserHistoryUpgrade {
             }
             if (input.equalsIgnoreCase("forward")){
 
-                if(queue.isEmpty()){
+                if(queueHere.isEmpty()){
                     System.out.println("no next URLs");
                 }else{
-                    stackHere.push(queue.peek());
-                    System.out.println(queue.poll());
+                    stackHere.push(queueHere.peek());
+                    System.out.println(queueHere.poll());
                 }
             }else if (!input.equalsIgnoreCase("back") && !input.equalsIgnoreCase("forward")){
-                queue.clear();
+                queueHere.clear();
             }
 
 

@@ -9,27 +9,27 @@ public class SimpleCalculator {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         //exp - 2 + 5 + 10 - 2 - 1
 
-        ArrayDeque<String> stackHere = new ArrayDeque<>();
+        ArrayDeque<String> stack = new ArrayDeque<>();
         String[] expression = reader.readLine().split("\\s+");
-        stackHere.addAll(Arrays.asList(expression));
+        stack.addAll(Arrays.asList(expression));
 
 
-        while (stackHere.size()!=1) {
-            int firstNum = Integer.parseInt(stackHere.pop());
-            String operator = stackHere.pop();
-            int secondNum = Integer.parseInt(stackHere.pop());
+        while (stack.size()!=1) {
+            int firstNum = Integer.parseInt(stack.pop());
+            String operator = stack.pop();
+            int secondNum = Integer.parseInt(stack.pop());
 
             if(operator.equalsIgnoreCase("+")){
-                stackHere.push(firstNum+secondNum + "");
+                stack.push(firstNum+secondNum + "");
             }else{
-                stackHere.push(firstNum - secondNum + "");
+                stack.push(firstNum - secondNum + "");
             }
 
 
 
 
         }
-        System.out.println(stackHere.pop());
+        System.out.println(stack.pop());
 
 
     }
