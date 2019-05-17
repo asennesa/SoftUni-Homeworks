@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Trainnnn {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        List<Integer> wagons = Arrays.stream(reader.readLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+        int maxCapacity = Integer.parseInt(reader.readLine());
+
+
+
+        while(true){
+
+            String inputs = reader.readLine();
+            if (inputs.equalsIgnoreCase("end")){
+                break;
+            }
+            String[] commandSplit = inputs.split(" ");
+            if(commandSplit[0].equalsIgnoreCase("Add")){
+                int numToAdd = Integer.parseInt(commandSplit[1]);
+                wagons.add(numToAdd);
+
+
+            }else if (!commandSplit[0].equalsIgnoreCase("add") || !commandSplit[0].equalsIgnoreCase("end")){
+                int numToAdd1 = Integer.parseInt(commandSplit[0]);
+                for (int i = 0; i <wagons.size() ; i++) {
+                        if ((wagons.get(i)) < maxCapacity){
+                            int test = wagons.get(i);
+                            if ((test +numToAdd1)<=maxCapacity){
+                                wagons.set(i,wagons.get(i)+numToAdd1);
+                                break;
+                            }
+                        }
+
+
+
+                }
+            }
+
+        }
+        System.out.println(wagons.toString().replaceAll("\\[|,|\\]",""));
+
+
+
+    }
+}

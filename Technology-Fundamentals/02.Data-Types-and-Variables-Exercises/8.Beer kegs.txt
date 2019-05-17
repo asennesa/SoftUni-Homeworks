@@ -1,0 +1,29 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class distracted {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = java.lang.Integer.parseInt(reader.readLine());
+        double max = Double.MIN_VALUE;
+        String modelSave = " ";
+        for (int i = 1; i <=n;i++){
+            String model = reader.readLine();
+            double radius = Double.parseDouble(reader.readLine());
+            int height = java.lang.Integer.parseInt(reader.readLine());
+
+            double calc = Math.PI*Math.pow(radius,2)*height;
+            if (calc > max){
+                max = calc;
+                modelSave=model;
+            }
+
+        }
+        System.out.println(modelSave);
+
+
+
+    }
+}

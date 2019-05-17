@@ -1,0 +1,79 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class gamingStore {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        double balance = Double.parseDouble(reader.readLine());
+        double startBalance = balance;
+        String time = reader.readLine();
+        while (!time.equalsIgnoreCase("Game Time")) {
+            if (time.equalsIgnoreCase("OutFall 4")) {
+                if (balance < 39.99) {
+                    System.out.println("Too Expensive");
+                } else {
+                    balance -= 39.99;
+                    System.out.println("Bought OutFall 4");
+                }
+            }
+            if (time.equalsIgnoreCase("CS: OG")) {
+                if (balance < 15.99) {
+                    System.out.println("Too Expensive");
+                } else {
+                    balance -= 15.99;
+                    System.out.println("Bought CS: OG");
+                }
+            }
+            if (time.equalsIgnoreCase("Zplinter Zell")) {
+                if (balance < 19.99) {
+                    System.out.println("Too Expensive");
+                } else {
+                    balance -= 19.99;
+                    System.out.println("Bought Zplinter Zell");
+                }
+            }
+            if (time.equalsIgnoreCase("Honored 2")) {
+                if (balance < 59.99) {
+                    System.out.println("Too Expensive");
+                } else {
+                    balance -= 59.99;
+                    System.out.println("Bought Honored 2");
+                }
+            }
+            if (time.equalsIgnoreCase("RoverWatch")) {
+                if (balance < 29.99) {
+                    System.out.println("Too Expensive");
+                } else {
+                    balance -= 29.99;
+                    System.out.println("Bought RoverWatch");
+                }
+            }
+            if (time.equalsIgnoreCase("RoverWatch Origins Edition")) {
+                if (balance < 39.99) {
+                    System.out.println("Too Expensive");
+                } else {
+                    balance -= 39.99;
+                    System.out.println("Bought RoverWatch Origins Edition");
+                }
+            }
+
+
+            if (balance == 0) {
+                System.out.println("Out of money!");
+                break;
+            }
+            if (!time.equalsIgnoreCase("OutFall 4") && !time.equalsIgnoreCase("CS: OG")
+                    && !time.equalsIgnoreCase("Zplinter Zell") && !time.equalsIgnoreCase("Honored 2")
+                    && !time.equalsIgnoreCase("RoverWatch") && !time.equalsIgnoreCase("RoverWatch Origins Edition")) {
+                System.out.println("Not Found");
+            }
+            time = reader.readLine();
+        }
+        if (balance > 0) {
+            double totalSpent = startBalance - balance;
+            System.out.println(String.format("Total spent: $%.2f. Remaining: $%.2f", totalSpent, balance));
+        }
+
+    }
+}

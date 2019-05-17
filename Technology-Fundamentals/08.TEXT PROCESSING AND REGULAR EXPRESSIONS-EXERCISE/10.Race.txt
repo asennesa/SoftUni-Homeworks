@@ -1,0 +1,59 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+public class thendesetrdathen {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        LinkedHashMap<String,Double>runnerDistance = new LinkedHashMap<>();
+        String[] participants = reader.readLine().split(", ");
+        for (int i = 0; i < participants.length; i++) {
+            runnerDistance.put(participants[i],0.0);
+        }
+        double currentSum = 0;
+        String input ="";
+        while(!"end of race".equalsIgnoreCase(input=reader.readLine())){
+            String nameFilter =input.replaceAll("[\\W+0-9+]+","");
+            String[]  distanceFilter = input.split("");
+            for (int i = 0; i < distanceFilter.length; i++) {
+                if(isNumeric(distanceFilter[i])){
+                    currentSum+=Double.valueOf(distanceFilter[i]);
+                }
+            }
+            if(runnerDistance.containsKey(nameFilter)){
+                runnerDistance.put(nameFilter,runnerDistance.get(nameFilter)+currentSum);
+            }
+            currentSum=0;
+
+        }
+        List<String>top3 = new ArrayList<>();
+
+        runnerDistance.entrySet().stream().sorted((e1,e2)->{
+            int sorted = Double.compare(e2.getValue(),e1.getValue());
+            return sorted;
+        }).limit(3).forEach(e->{
+            top3.add(e.getKey());
+
+
+        });
+        System.out.println(String.format("1st place: %s",top3.get(0)));
+        System.out.println(String.format("2nd place: %s",top3.get(1)));
+        System.out.println(String.format("3rd place: %s",top3.get(2)));
+
+
+
+
+    }
+    public static boolean isNumeric(String str) {
+        try {
+            Double.parseDouble(str);
+            return true;
+        } catch(NumberFormatException e){
+            return false;
+        }
+    }
+}

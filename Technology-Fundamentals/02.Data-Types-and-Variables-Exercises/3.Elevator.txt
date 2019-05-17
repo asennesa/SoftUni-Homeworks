@@ -1,0 +1,16 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+public class Eleveator {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        int n = java.lang.Integer.parseInt(reader.readLine());
+        int p = java.lang.Integer.parseInt(reader.readLine());
+        int left = (int)Math.ceil((double) n/p);
+        System.out.println(left);
+
+    }
+}

@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class repeatWord {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String[] bannedWords = reader.readLine().split(", ");
+        String text = reader.readLine();
+        for (String bannedWord:bannedWords) {
+            if(text.contains(bannedWord)){
+                String replcamenet = repeatStr("*",bannedWord.length());
+                text=text.replace(bannedWord,replcamenet);
+            }
+
+        }
+        System.out.println(text);
+
+    }
+    private static String repeatStr(String str, int length) {
+        String replacement = "";
+        for (int i = 0; i < length; i++) {
+            replacement += str;
+        }
+        return replacement;
+    }
+
+}

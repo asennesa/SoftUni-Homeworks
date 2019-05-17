@@ -1,0 +1,20 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class repeatWord {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+       String word = reader.readLine();
+       String text = reader.readLine();
+
+       int index = text.indexOf(word); //vrushta indexa ot koito zapochva dumata v texta.Ako dumata lipsva e ravno na -1
+
+        while(index != -1){
+            text=text.replace(word,"");  // zamenq dumata s posocheniq replacement
+            index= text.indexOf(word);
+        }
+        System.out.println(text);
+    }
+}

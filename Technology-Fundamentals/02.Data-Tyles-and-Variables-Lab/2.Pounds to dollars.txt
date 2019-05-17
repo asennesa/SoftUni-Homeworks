@@ -1,0 +1,14 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class LAB {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        double pounds = Double.parseDouble(reader.readLine());
+        double dollars = pounds*1.31;
+        System.out.printf("%.3f",dollars);
+
+    }
+}

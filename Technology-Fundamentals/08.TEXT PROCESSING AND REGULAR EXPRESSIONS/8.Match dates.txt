@@ -1,0 +1,29 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class yearDateStuff {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String regex = "\\b(?<day>\\d{2})([-.\\/])(?<month>[A-Z][a-z]{2})\\2(?<year>\\d{4})\\b";
+        String input = reader.readLine();
+        List<String>validDates = new ArrayList<>();
+
+        Pattern container = Pattern.compile(regex);
+        Matcher matcher = container.matcher(input);
+
+        while(matcher.find()){
+            String dates = matcher.group("day");
+            String month = matcher.group("month");
+            String year = matcher.group("year");
+            System.out.println(String.format("Day: %s, Month: %s, Year: %s",dates,month,year));
+        }
+
+
+
+    }
+}

@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
+
+public class Calcualte {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String operation = reader.readLine();
+        double num0 = Integer.parseInt(reader.readLine());
+
+        calculate(operation, num0);
+
+
+    }
+
+    static void calculate(String operation, double num0) {
+        if (operation.equalsIgnoreCase("coffee")) {
+            double result = num0 * 1.50;
+            System.out.println(String.format("%.2f", result));
+        } else if (operation.equalsIgnoreCase("water")) {
+            double result = num0 * 1;
+            System.out.println(String.format("%.2f", result));
+        } else if (operation.equalsIgnoreCase("coke")) {
+            double result = num0 * 1.40;
+            System.out.println(String.format("%.2f", result));
+        } else if (operation.equalsIgnoreCase("snacks")) {
+            double result = num0 * 2;
+            System.out.println(String.format("%.2f", result));
+        }
+
+
+    }
+
+}

@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class TRIPPLES {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = java.lang.Integer.parseInt(reader.readLine());
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    char firstChar = (char) ('a' + i);
+                    char secChar = (char) ('a' + j);
+                    char thirdChar = (char) ('a' + k);
+                    System.out.print(String.format("%c%c%c%n", firstChar, secChar, thirdChar));
+                }
+            }
+
+        }
+    }
+}

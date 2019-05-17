@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class matminmax {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List<String> elements = Arrays.stream(reader.readLine().split("\\s+")).collect(Collectors.toList());
+
+        String [] bombNpower = reader.readLine().split("\\s+");
+
+        String bomb =(bombNpower[0]);
+        int power =Integer.parseInt(bombNpower[1]);
+
+        while(elements.contains(bomb)){
+            int index = elements.indexOf(bomb);
+
+            int left = Math.max(0,index-power);
+            int right =Math.min(index+power,elements.size()-1);
+            for (int i = right; i>=left ; i--) {
+                elements.remove(i);
+                
+            }
+        }
+        System.out.println(elements.stream().mapToInt(Integer::parseInt).sum());
+
+    }
+}

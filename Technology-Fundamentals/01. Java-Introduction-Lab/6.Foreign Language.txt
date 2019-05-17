@@ -1,0 +1,19 @@
+import java.util.Scanner;
+
+public class ForeignLanguage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String country = scanner.nextLine();
+
+
+        if (country.equalsIgnoreCase("USA")){
+            System.out.println("English");
+        }else if (country.equalsIgnoreCase("England")){
+            System.out.println("English");
+        }else if (country.equalsIgnoreCase("SPAIN") ||(country.equalsIgnoreCase("ARGENTINA")||(country.equalsIgnoreCase("MEXICO")))){
+            System.out.println("Spanish");
+        }else{
+            System.out.println("unknown");
+        }
+    }
+}

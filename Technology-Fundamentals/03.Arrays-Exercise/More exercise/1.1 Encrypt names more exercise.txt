@@ -1,0 +1,51 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+public class encryptstuff {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(reader.readLine());
+        String[] names = new String[n];
+        int vowelsSum = 0;
+        int consonantSum = 0;
+        int[] sums = new int[n];
+
+        for (int i = 0; i <n ; i++) {
+            String input = reader.readLine();
+            names[i]=input;
+        }
+        for (int i = 0; i < names.length; i++) {
+            String[] splitIndex = names[i].split("");
+            for (int j = 0; j < splitIndex.length; j++) {
+                if(splitIndex[j].equalsIgnoreCase("A")||splitIndex[j].equalsIgnoreCase("E")||splitIndex[j].equalsIgnoreCase("I")||
+                   splitIndex[j].equalsIgnoreCase("O")||splitIndex[j].equalsIgnoreCase("U")){
+                    char vowel = splitIndex[j].charAt(0);
+                    int numToSum =vowel*splitIndex.length;
+                    vowelsSum+=numToSum;
+                    numToSum=0;
+                }else{
+                    char consonant = splitIndex[j].charAt(0);
+                    int numToSum = consonant/splitIndex.length;
+                    consonantSum+=numToSum;
+                    numToSum=0;
+                }
+
+            }
+
+            int sum = vowelsSum+consonantSum;
+            vowelsSum=0;
+            consonantSum=0;
+            sums[i]=sum;
+            sum=0;
+
+
+
+
+
+
+        }
+        Arrays.stream(sums).sorted().forEach(System.out::println);
+    }
+}

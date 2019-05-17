@@ -1,0 +1,32 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class factorel {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        double num = Double.parseDouble(reader.readLine());
+        double num1 = Double.parseDouble(reader.readLine());
+        double end = factorial(num, num1) / factorial1(num, num1);
+        System.out.printf("%.2f", end);
+    }
+
+    static double factorial(double num, double num1) {
+        double fact=1;
+        for(int i =1;i<=num;i++){
+            fact=fact*i;
+        }
+        return fact;
+
+    }
+
+    static double factorial1(double num, double num1) {
+        double fact=1;
+        for(int i =1;i<=num1;i++){
+            fact=fact*i;
+        }
+        return fact;
+
+    }
+
+}

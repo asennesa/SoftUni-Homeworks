@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class vneddddding {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String word = scanner.nextLine();
+        double sumCoins = 0;
+
+        while (!word.equalsIgnoreCase("start")) {
+            Double inputMoney = Double.parseDouble(word);
+
+            if (inputMoney == 0.1 || inputMoney == 0.2 || inputMoney == 0.5 || inputMoney == 1 || inputMoney == 2) {
+                sumCoins += inputMoney;
+            } else {
+                System.out.println("Cannot accept " + inputMoney);
+
+            }
+            word = scanner.nextLine();
+        }
+        String word1 = scanner.nextLine();
+        while (!word1.equalsIgnoreCase("end")) {
+            if (!word1.equalsIgnoreCase("nuts") && !word1.equalsIgnoreCase("water") &&
+             !word1.equalsIgnoreCase("coke")&& !word1.equalsIgnoreCase("crisps")&& !word1.equalsIgnoreCase("soda")){
+                System.out.println("Invalid product");
+            }
+            if (word1.equalsIgnoreCase("nuts")) {
+                if (sumCoins >= 2) {
+                    sumCoins -= 2;
+                    System.out.println("Purchased Nuts");
+                } else {
+                    System.out.println("Sorry, not enough money");
+                }
+            }
+                if (word1.equalsIgnoreCase("Water")) {
+                    if (sumCoins >= 0.7) {
+                        sumCoins -= 0.7;
+                        System.out.println("Purchased Water");
+                    } else {
+                        System.out.println("Sorry, not enough money");
+                    }
+                }
+                    if (word1.equalsIgnoreCase("Crisps")) {
+                        if (sumCoins >= 1.5) {
+                            sumCoins -= 1.5;
+                            System.out.println("Purchased Crisps");
+                        } else {
+                            System.out.println("Sorry, not enough money");
+                        }
+                    }
+                        if (word1.equalsIgnoreCase("Soda")) {
+                            if (sumCoins >= 0.8) {
+                                sumCoins -= 0.8;
+                                System.out.println("Purchased Soda");
+                            } else {
+                                System.out.println("Sorry, not enough money");
+                            }
+
+                        }
+                        if (word1.equalsIgnoreCase("Coke")) {
+                            if (sumCoins >= 1) {
+                                sumCoins -= 1;
+                                System.out.println("Purchased Coke");
+
+                            } else {
+                                System.out.println("Sorry, not enough money");
+                            }
+
+                        }
+
+                        word1 = scanner.nextLine();
+
+                    }
+                    System.out.printf("Change: %.2f", sumCoins);
+                }
+            }

@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+public class condense {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        int[] nums = Arrays.stream(reader.readLine().split(" ")).mapToInt(x->Integer.parseInt(x)).toArray();
+        while(nums.length > 1)
+        {
+            int[] condensed =new int[nums.length-1];
+            for(int i=0; i<condensed.length; i++)
+            {
+                condensed[i] = nums[i] + nums[i + 1];
+            }
+
+            nums = condensed;
+        }
+
+        System.out.println(nums[0]);
+
+    }
+}

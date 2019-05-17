@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class Calcualte {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        double num0 = Integer.parseInt(reader.readLine());
+        String operation = reader.readLine();
+        double num1 = Integer.parseInt(reader.readLine());
+        calculate(operation, num0, num1);
+
+
+    }
+
+    static void calculate(String operation, double num0, double num1) {
+        if (operation.equalsIgnoreCase("+")) {
+            double result = num0 + num1;
+            System.out.println(String.format("%.0f", result));
+        } else if (operation.equalsIgnoreCase("*")) {
+            double result = num0 * num1;
+            System.out.println(String.format("%.0f", result));
+        } else if (operation.equalsIgnoreCase("/")) {
+            double result = num0 / num1;
+            System.out.println(String.format("%.0f", result));
+        } else if (operation.equalsIgnoreCase("-")) {
+            double result = num0 - num1;
+            System.out.println(String.format("%.0f", result));
+        }
+
+
+    }
+
+}

@@ -1,0 +1,108 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class commands {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        List<Integer> forManipulations = Arrays.stream(reader.readLine().split(" "))
+                .map(Integer::parseInt).collect(Collectors.toList());
+
+
+        while (true) {
+
+            String commands = reader.readLine();
+            if (commands.equalsIgnoreCase("end")) {
+                break;
+            }
+            String[] splitCommand = commands.split(" ");
+            switch (splitCommand[0]) {
+                case "Contains":
+                    int numberToCheckFor = Integer.parseInt(splitCommand[1]);
+                    boolean check = forManipulations.contains(numberToCheckFor);
+                    if (check) {
+                        System.out.println("Yes");
+                    } else {
+                        System.out.println("No such number");
+                    }
+                    break;
+                case "Get":
+                    int sum = 0;
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        sum += forManipulations.get(i);
+
+                    }
+                    System.out.println(sum);
+                    break;
+
+            }
+            switch (splitCommand[1]) {
+                case "even":
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        if (forManipulations.get(i) % 2 == 0) {
+                            System.out.print(forManipulations.get(i) + " ");
+                        }
+                    }
+                    System.out.println();
+                    break;
+                case "odd":
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        if (forManipulations.get(i) % 2 == 1) {
+                            System.out.print(forManipulations.get(i) + " ");
+                        }
+                    }
+                    System.out.println();
+                    break;
+                case ">=":
+                    int number = Integer.parseInt(splitCommand[2]);
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        if (forManipulations.get(i) >= number) {
+                            System.out.print(forManipulations.get(i) + " ");
+                        }
+
+                    }
+                    System.out.println();
+                    break;
+                case "<=":
+                    int number1 = Integer.parseInt(splitCommand[2]);
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        if (forManipulations.get(i) <= number1) {
+                            System.out.print(forManipulations.get(i) + " ");
+                        }
+
+                    }
+                    System.out.println();
+                    break;
+                case ">":
+                    int number2 = Integer.parseInt(splitCommand[2]);
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        if (forManipulations.get(i) > number2) {
+                            System.out.print(forManipulations.get(i) + " ");
+                        }
+
+                    }
+                    System.out.println();
+                    break;
+                case "<":
+                    int number3 = Integer.parseInt(splitCommand[2]);
+                    for (int i = 0; i < forManipulations.size(); i++) {
+                        if (forManipulations.get(i) < number3) {
+                            System.out.print(forManipulations.get(i) + " ");
+                        }
+
+                    }
+                    System.out.println();
+                    break;
+
+            }
+
+
+        }
+
+
+    }
+}

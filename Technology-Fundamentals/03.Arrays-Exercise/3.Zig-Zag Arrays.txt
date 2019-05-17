@@ -1,0 +1,36 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class ZigZagArrays {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(reader.readLine());
+        String[] arrayOne = new String[n];
+        String[] arrayTwo = new String[n];
+        int counter = 0;
+
+
+        for (int i = 0; i < n; i++) {
+            counter++;
+            String[] elements = reader.readLine().split(" ");
+            if (counter % 2 == 0) {
+                arrayOne[i] = elements[0];
+                arrayTwo[i] = elements[1];
+            } else {
+                arrayOne[i] = elements[1];
+                arrayTwo[i] = elements[0];
+
+            }
+        }
+        for (String j : arrayTwo) {
+            System.out.print(j + " ");
+
+        }
+        System.out.println();
+        for (String k : arrayOne) {
+            System.out.print(k + " ");
+        }
+
+    }
+}

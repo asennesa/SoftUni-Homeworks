@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class oncemore {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String regex = "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b";
+        String input = reader.readLine(); //Vzimash cql string.
+
+        Pattern pattern = Pattern.compile(regex); //Izpolzva regex stringa kato shablon.
+        Matcher matcher = pattern.matcher(input); // Tursi suvpadenie na chasti ot stringa sus shablona.
+
+        while(matcher.find()){ // Dokato matched.find e v sustoqnie true(ima suvpadenie) izpulnqva koda po dolo.
+
+            System.out.print(matcher.group()+" ");//Printira suvpadeniqta.
+        }
+    }
+}

@@ -1,0 +1,30 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class WATERTANK {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int times = java.lang.Integer.parseInt(reader.readLine());
+        int count = 0;
+        int tank = 0;
+
+        while (times != count) {
+            int inputs = java.lang.Integer.parseInt(reader.readLine());
+         
+            count++;
+            tank += inputs;
+            if (tank > 255) {
+                System.out.println("Insufficient capacity!");
+                tank -= inputs;
+
+            }
+
+        }
+        System.out.println(tank);
+
+
+    }
+
+}
+

@@ -1,0 +1,23 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class subtracacatat3 {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int num1 = Integer.parseInt(reader.readLine());
+        int num2 = Integer.parseInt(reader.readLine());
+        int num3 = Integer.parseInt(reader.readLine());
+        System.out.println(third(num1, num2, num3));
+
+
+    }
+
+    static int sumFrstSecod(int num1, int num2) {
+        return num1 + num2;
+    }
+
+    static int third(int num1, int num2, int num3) {
+        return sumFrstSecod(num1, num2) - num3;
+    }
+}

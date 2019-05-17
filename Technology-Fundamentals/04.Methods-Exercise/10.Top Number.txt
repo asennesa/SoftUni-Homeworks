@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class topspdpasdpasdp {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int num = Integer.parseInt(reader.readLine());
+
+        int sum = 0;
+        int counter = 0;
+        for (int i = 1; i <= num; i++) {
+            int dummy = i;
+            while (dummy > 0) {
+                int digit = dummy % 10;
+                if (digit % 2 == 1) {
+                    counter++;
+                }
+                sum += digit;
+                dummy = dummy / 10;
+            }
+            if (sum % 8 == 0 && counter >= 1) {
+                System.out.println(i);
+            }
+            sum = 0;
+            counter = 0;
+
+        }
+
+    }
+}

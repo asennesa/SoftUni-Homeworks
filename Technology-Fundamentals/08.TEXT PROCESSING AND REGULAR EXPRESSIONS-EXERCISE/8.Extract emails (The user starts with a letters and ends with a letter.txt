@@ -1,0 +1,3 @@
+\s[A-Za-z][\w.-]*[A-Za-z0-9]@[A-Za-z-]+(\.[A-Za-z]+)+
+
+regex za text s simvoli mejdo bukvite koito nemoje da zapochva s simvul nito da zavurshva stakuv. \s[A-Za-z][\w.-]*[A-Za-z0-9]@

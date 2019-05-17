@@ -1,0 +1,43 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+public class courses {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        LinkedHashMap<String, List<String>>courseStudents = new LinkedHashMap<>();
+
+        String input ="";
+        while(!"end".equalsIgnoreCase(input=reader.readLine())){
+            String[] split = input.split("\\s+:\\s+");
+            String course = split[0];
+            String student = split[1];
+
+            if(!courseStudents.containsKey(course)){
+                courseStudents.put(course,new ArrayList<>());
+                courseStudents.get(course).add(student);
+            }else{
+                courseStudents.get(course).add(student);
+            }
+        }
+        courseStudents.entrySet().stream().sorted((e1,e2)->{
+            int sort = Integer.compare(e2.getValue().size(),e1.getValue().size());
+             return sort;
+        }).forEach(e->{
+            Collections.sort(e.getValue());
+            System.out.println(String.format("%s: %d",e.getKey(),e.getValue().size()));
+            e.getValue().stream().forEach(b->{
+                System.out.println(String.format("-- %s",b));
+
+            });
+
+
+        });
+
+        
+    }
+}

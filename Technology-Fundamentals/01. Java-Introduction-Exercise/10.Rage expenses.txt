@@ -1,0 +1,34 @@
+import java.util.Scanner;
+
+public class RAGE {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double lostgame = Double.parseDouble(scanner.nextLine());
+        double headset  = Double.parseDouble(scanner.nextLine());
+        double mouse = Double.parseDouble(scanner.nextLine());
+        double keyboard = Double.parseDouble(scanner.nextLine());
+        double display  = Double.parseDouble(scanner.nextLine());
+        double headCount = 0;
+        double mouseCount = 0;
+        double keyCount = 0;
+        double displayCount = 0;
+
+        for (int i = 1; i <= lostgame; i ++){
+            if (i % 2 == 0){
+                headCount +=1;
+            }
+            if(i % 3 == 0){
+                mouseCount+=1;
+
+            }
+            if (i %6 == 0){
+                keyCount+=1;
+            }
+
+        }
+        double displayTimes = Math.floor(keyCount/2);
+        double end = headset*headCount+mouse*mouseCount+keyboard*keyCount+display*displayTimes;
+        System.out.printf("Rage expenses: %.2f lv.",end);
+
+    }
+}

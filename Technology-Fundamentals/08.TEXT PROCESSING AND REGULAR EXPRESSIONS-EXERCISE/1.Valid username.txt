@@ -1,0 +1,21 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class validUsername {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String usernames =reader.readLine();
+
+        String regex = "\\b(^|(?<=\\s))[A-Za-z0-9-_]{3,16}($|(?=,))";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher username = pattern.matcher(usernames);
+
+        while(username.find()){
+            System.out.println(username.group());
+        }
+
+    }
+}

@@ -1,0 +1,22 @@
+import java.util.Scanner;
+
+public class division {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double num = Double.parseDouble(scanner.nextLine());
+        int devider = 0;
+        if(num%2 == 0) devider =2;
+        if(num%3 == 0) devider =3;
+        if(num%6 == 0) devider =6;
+        if(num%7 == 0) devider =7;
+        if(num%10 == 0) devider =10;
+
+        if (devider == 0){
+            System.out.println("Not divisible");
+        }else{
+            System.out.println("The number is divisible by " +devider);
+        }
+
+
+    }
+}

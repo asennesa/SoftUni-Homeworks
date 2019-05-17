@@ -1,0 +1,66 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class poekmondontgo {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List<Integer> sequence= Arrays.stream(reader.readLine().split("\\s+")).map(Integer::parseInt).collect(Collectors.toList());
+        int sumOfRemovedElements = 0;
+        while(sequence.size() > 0) {
+            int index = Integer.parseInt(reader.readLine());
+
+            if (index >= 0 && index <= sequence.size()-1) {
+                int removedElement = sequence.get(index);
+                sumOfRemovedElements += removedElement;
+                sequence.remove(index);
+                for (int i = 0; i < sequence.size(); i++) {
+                    if (sequence.get(i) <= removedElement) {
+                        int value = sequence.get(i);
+                        int increased = value + removedElement;
+                        sequence.set(i, increased);
+                    } else if (sequence.get(i) > removedElement) {
+                        int value = sequence.get(i);
+                        int decreased = value - removedElement;
+                        sequence.set(i, decreased);
+                    }
+                }
+            }else if(index <0){
+                int firstElement = sequence.get(0);
+                sumOfRemovedElements+=firstElement;
+                sequence.set(0,sequence.get(sequence.size()-1));
+                operations(sequence,firstElement);
+            }else if(index >sequence.size()-1){
+                int lastElement = sequence.get(sequence.size()-1);
+                sumOfRemovedElements+=lastElement;
+                sequence.set(sequence.size()-1,sequence.get(0));
+                operations(sequence,lastElement);
+            }
+        }
+        System.out.println(sumOfRemovedElements);
+
+
+
+
+
+
+    }
+
+    private static void operations(List<Integer> sequence,int removedElement) {
+        for (int i = 0; i < sequence.size(); i++) {
+            if (sequence.get(i) <= removedElement) {
+                int value = sequence.get(i);
+                int increased = value + removedElement;
+                sequence.set(i, increased);
+            } else if (sequence.get(i) > removedElement) {
+                int value = sequence.get(i);
+                int decreased = value - removedElement;
+                sequence.set(i, decreased);
+            }
+        }
+    }
+
+}

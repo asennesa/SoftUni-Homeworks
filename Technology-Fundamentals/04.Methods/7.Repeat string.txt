@@ -1,0 +1,22 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class repeatString {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String str = reader.readLine();
+        int repeat = Integer.parseInt(reader.readLine());
+        String result = repeatString(str,repeat);
+        System.out.println(result);
+
+    }
+    static String repeatString (String str,int repeat){
+        String result = "";
+        for (int i = 0; i < repeat; i++){
+            result = result+str;
+        }
+        return result;
+
+    }
+}

@@ -1,0 +1,25 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+public class ListOfPrODUCTS {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(reader.readLine());
+        List<String>products = new ArrayList<>();
+        for (int i = 0; i <n ; i++) {
+            String product = reader.readLine();
+            products.add(product);
+
+
+        }
+        Collections.sort(products);
+        for (int i = 0; i <products.size() ; i++) {
+            System.out.println(i+1+"."+products.get(i));
+        }
+
+    }
+}

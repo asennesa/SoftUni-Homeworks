@@ -1,0 +1,49 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class stringcomp {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String type = reader.readLine();
+        if (type.equalsIgnoreCase("int")) {
+            int one = Integer.parseInt(reader.readLine());
+            int two = Integer.parseInt(reader.readLine());
+            System.out.println(intComp(one, two));
+
+        } else if (type.equalsIgnoreCase("char")) {
+            char one = reader.readLine().charAt(0);
+            char two = reader.readLine().charAt(0);
+            System.out.println(charComp(one, two));
+
+        } else if (type.equalsIgnoreCase("String")) {
+            String one = reader.readLine();
+            String two = reader.readLine();
+            System.out.println(strComp(one, two));
+
+        }
+        
+    }
+
+    static String strComp(String one, String two) {
+        String max = "";
+        if (one.compareTo(two) > 0) max = one;
+        if (one.compareTo(two) < 0) max = two;
+        if (one.compareTo(two) == 0) max = "equal";
+        return max;
+    }
+
+    static char charComp(char one, char two) {
+        char max = Character.MIN_VALUE;
+        if (one > two) max = one;
+        if (one < two) max = two;
+        return max;
+    }
+
+    static int intComp(int one, int two) {
+        int max = Integer.MIN_VALUE;
+        if (one > two) max = one;
+        if (one < two) max = two;
+        return max;
+    }
+}

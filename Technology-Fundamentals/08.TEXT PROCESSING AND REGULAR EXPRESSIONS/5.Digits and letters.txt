@@ -1,0 +1,54 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class divide {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String inputText = reader.readLine();
+
+        String digits = "";
+        String letters = "";
+        String specialCharacters = inputText;
+        StringBuilder sb = new StringBuilder(specialCharacters);
+
+
+        for (int i = 0; i < inputText.length(); i++) {
+            if (Character.isDigit(inputText.charAt(i))) {
+                digits+=inputText.charAt(i);
+                String test = String.valueOf(inputText.charAt(i));
+                int index = sb.toString().indexOf(test);
+                if(specialCharacters.contains(test)){
+                    if(index>=0){
+                        sb.deleteCharAt(index);
+
+                    }
+                }
+
+
+            }
+            if (Character.isLetter(inputText.charAt(i))) {
+                letters+=inputText.charAt(i);
+                String test = String.valueOf(inputText.charAt(i));
+                int index = sb.toString().indexOf(test);
+                if(specialCharacters.contains(test)){
+                    if(index>=0){
+                        sb.deleteCharAt(index);
+
+                    }
+
+                }
+
+
+            }
+        }
+
+        System.out.println(digits);
+        System.out.println(letters);
+        System.out.println(sb.toString());
+    }
+
+    }
+

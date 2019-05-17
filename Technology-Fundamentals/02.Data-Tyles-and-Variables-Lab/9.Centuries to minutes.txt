@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.math.BigDecimal;
+
+public class omggg {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        long cenutires = Long.parseLong(reader.readLine());
+      /*  BigDecimal centuries = new BigDecimal(reader.readLine());
+        centuries= centuries.multiply(BigDecimal.valueOf(100));
+        centuries=centuries.multiply(BigDecimal.valueOf(365.2422));
+        centuries=centuries.multiply(BigDecimal.valueOf(24));
+        centuries=centuries.multiply(BigDecimal.valueOf(60));
+        System.out.println(centuries);
+        */
+
+      long years = cenutires*100;
+      long days=(long)(years*365.2422);
+      long hours=days*24;
+      long mins =hours*60;
+        System.out.printf("%d centuries = %d years = %d days = %d hours = %d minutes ",cenutires,years,days,hours,mins);
+
+
+
+
+    }
+}

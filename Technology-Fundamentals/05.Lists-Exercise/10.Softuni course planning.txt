@@ -1,0 +1,102 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class courseplanning {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List<String> schedule = Arrays.stream(reader.readLine().split(", ")).collect(Collectors.toList());
+
+        String input = "";
+        while (!"course start".equalsIgnoreCase(input = reader.readLine())) {
+            String[] commands = input.split(":");
+            switch (commands[0]) {
+                case "Add":
+                    boolean checker = false;
+                    for (int i = 0; i < schedule.size(); i++) {
+                        if (!commands[1].equalsIgnoreCase(schedule.get(i))) {
+                            checker = true;
+                        }
+                    }
+                    if (checker) {
+                        schedule.add(commands[1]);
+                    }
+                    break;
+                case "Insert":
+
+                    if (!schedule.contains(commands[1])) {
+                        int indexToAddAt = Integer.parseInt(commands[2]);
+                        schedule.add(indexToAddAt, commands[1]);
+                    }
+                    break;
+                case "Remove":
+                    String exercise = commands[1] + "-Exercise";
+                    if (schedule.contains(commands[1])) {
+                        schedule.remove(commands[1]);
+                        if (schedule.contains(exercise)) {
+                            schedule.remove(exercise);
+                        }
+                    }
+                    break;
+                case "Swap":
+                    exercise = commands[1] + "-Exercise";
+                    String exercise2 = commands[2] + "-Exercise";
+                    if (schedule.contains(commands[1]) && schedule.contains(commands[2])) {
+                        int indexOne = schedule.indexOf(commands[1]);
+                        int indexTwo = schedule.indexOf(commands[2]);
+                        if (!schedule.contains(exercise) && !schedule.contains(exercise2)) {
+                            schedule.set(indexOne, commands[2]);
+                            schedule.set(indexTwo, commands[1]);
+                        }
+                        if (schedule.contains(exercise) && schedule.contains(exercise2)) {
+                            schedule.set(indexOne, commands[2]);
+                            schedule.set(indexTwo, commands[1]);
+                            String exerciseOne = schedule.get(indexOne + 1);
+                            String exerciseTwo = schedule.get(indexTwo + 1);
+                            schedule.set(indexOne + 1, exerciseTwo);
+                            schedule.set(indexTwo + 1, exerciseOne);
+                        }
+                        if (schedule.contains(exercise) && !schedule.contains(exercise2)) {
+                            schedule.set(indexOne, commands[2]);
+                            schedule.set(indexTwo, commands[1]);
+                            schedule.add(indexTwo + 1, "0");
+                            schedule.remove(exercise);
+                            schedule.set(indexTwo + 1, exercise);
+                        }
+                        if (!schedule.contains(exercise) && schedule.contains(exercise2)) {
+                            schedule.set(indexOne, commands[2]);
+                            schedule.set(indexTwo, commands[1]);
+                            schedule.add(indexOne + 1, "0");
+                            schedule.remove(exercise2);
+                            schedule.set(indexOne + 1, exercise2);
+                        }
+
+
+                    }
+                    break;
+                case "Exercise":
+                    exercise = commands[1] + "-Exercise";
+                    if (schedule.contains(commands[1]) && !schedule.contains(exercise)) {
+                        int indexOfLesson = schedule.indexOf(commands[1]);
+                        schedule.add(indexOfLesson + 1, exercise);
+
+
+                    } else if (!schedule.contains(commands[1])) {
+                        schedule.add(commands[1]);
+                        schedule.add(exercise);
+
+                    }
+
+
+            }
+
+        }
+        for (int i = 0; i < schedule.size(); i++) {
+            System.out.println(i + 1 + "." + schedule.get(i));
+        }
+    }
+}

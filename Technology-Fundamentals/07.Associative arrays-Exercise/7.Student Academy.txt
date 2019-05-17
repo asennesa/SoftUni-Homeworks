@@ -1,0 +1,56 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class StudentAcademy {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(reader.readLine());
+
+        Map<String, List<Double>> studnetAndGrades = new LinkedHashMap<>();
+
+        for (int i = 0; i < n; i++) {
+            String name = reader.readLine();
+            double grade = Double.parseDouble(reader.readLine());
+            if(!studnetAndGrades.containsKey(name)){
+                studnetAndGrades.put(name,new ArrayList<>());
+                studnetAndGrades.get(name).add(grade);
+            }else{
+                studnetAndGrades.get(name).add(grade);
+            }
+        }
+        studnetAndGrades.entrySet().stream()
+                .forEach(entry -> {
+                    double average = entry.getValue().stream()
+                            .mapToDouble(Double::doubleValue)
+                            .average()
+                            .getAsDouble();
+                    entry.getValue().removeAll(entry.getValue());
+                    entry.getValue().add(average);
+
+                });
+
+
+       /* for (Map.Entry<String,List<Double>>entry:studnetAndGrades.entrySet()) {
+            if(entry.getValue().get(0)<4.50){
+                studnetAndGrades.remove(entry.getKey());
+            }
+
+        }*/
+
+
+        studnetAndGrades.entrySet().stream()
+                .sorted((e1,e2)->{
+                    int sort = Double.compare(e2.getValue().get(0),e1.getValue().get(0));
+
+
+                    return sort; })
+                .forEach(e-> {
+                    if(e.getValue().get(0)>=4.50){
+                        System.out.println(String.format("%s -> %.2f",e.getKey(),e.getValue().get(0)));
+                    }
+                });
+
+    }
+}

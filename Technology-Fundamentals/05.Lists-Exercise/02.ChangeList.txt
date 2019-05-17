@@ -1,0 +1,45 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class Changelist {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        List<Integer> nums = Arrays.stream(reader.readLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+
+        while (true) {
+            String end = reader.readLine();
+            if (end.equalsIgnoreCase("end")) {
+                break;
+            }
+            String[] split = end.split("\\s+");
+
+            if (split[0].equalsIgnoreCase("Delete")) {
+                int numToDelete = Integer.parseInt(split[1]);
+                for (int i = 0; i < nums.size(); i++) {
+                    if (nums.get(i) == numToDelete) {
+                        nums.remove(nums.get(i));
+                    }
+                }
+            }
+            if (split[0].equalsIgnoreCase("Insert")) {
+                int element = Integer.parseInt(split[1]);
+                int position = Integer.parseInt(split[2]);
+                if (position >nums.size()-1){
+                    break;
+                }else{
+                    nums.add(position, element);
+                }
+
+            }
+
+        }
+        System.out.println(nums.toString().replaceAll("\\[|,|\\]", ""));
+
+
+    }
+}

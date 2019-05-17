@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class padawant {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double money = Double.parseDouble(scanner.nextLine());
+        double students = Double.parseDouble(scanner.nextLine());
+        double lightsabers = Double.parseDouble(scanner.nextLine());
+        double robes = Double.parseDouble(scanner.nextLine());
+        double belts = Double.parseDouble(scanner.nextLine());
+        double round = Math.ceil(students*0.1);
+        double roundBelts = Math.ceil(students-(students/6));
+
+         if (students >=6){
+            double sum = lightsabers*(students+round)+robes*students+belts*roundBelts;
+            if(money  >= sum){
+                System.out.printf("The money is enough - it would cost %.2flv.",sum);
+            }else  {
+                System.out.printf("Ivan Cho will need %.2flv more.",sum-money);
+            }
+        }else {
+            double sum = lightsabers*(students+round)+robes*students+belts*students;
+            if(money  >= sum){
+                System.out.printf("The money is enough - it would cost %.2flv.",sum);
+            }else {
+                System.out.printf("Ivan Cho will need %.2flv more.",sum-money);
+            }
+
+        }
+
+
+    }
+}

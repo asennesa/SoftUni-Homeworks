@@ -1,0 +1,20 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class repeatWord {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String[] words = reader.readLine().split("\\s+");
+         String result = "";
+        for (String word:words) {
+
+            for (int i = 0; i < word.length(); i++) {
+                result+=word;
+            }
+
+        }
+        System.out.println(result);
+    }
+}

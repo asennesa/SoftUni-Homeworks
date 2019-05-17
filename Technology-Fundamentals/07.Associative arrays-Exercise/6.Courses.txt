@@ -1,0 +1,50 @@
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+
+public class Courses {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        LinkedHashMap<String, List<String>>courseAndNames = new LinkedHashMap<>();
+
+        String input ="";
+
+        while(!"end".equalsIgnoreCase(input=reader.readLine())){
+            String[] split = input.split(" : ");
+            String course = split[0];
+            String name = split[1];
+            if(!courseAndNames.containsKey(course)){
+                courseAndNames.put(course,new ArrayList<>());
+                courseAndNames.get(course).add(name);
+            }else{
+                courseAndNames.get(course).add(name);
+            }
+
+
+        }
+
+
+
+          courseAndNames.entrySet().stream()
+                .sorted((e1,e2)->{
+                    int sort = Integer.compare(e2.getValue().size(),e1.getValue().size());
+                    return  sort;
+                }).forEach(entry ->{
+                    int temp = entry.getValue().size();
+
+              System.out.println(String.format("%s: %d",entry.getKey(),temp));
+              entry.getValue()
+                      .stream()
+                      .sorted(Comparator.comparing(String::new, Comparator.nullsFirst(String.CASE_INSENSITIVE_ORDER)))
+                      .forEach(e -> System.out.printf("-- %s%n", e));
+
+          });
+
+
+
+
+    }
+}

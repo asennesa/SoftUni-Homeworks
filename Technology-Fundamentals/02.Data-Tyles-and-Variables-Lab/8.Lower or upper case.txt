@@ -1,0 +1,18 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class lowerOrUpper {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String letter = reader.readLine();
+
+        boolean hasLowercase =!letter.equals(letter.toUpperCase());
+        boolean hasUppercase =!letter.equals(letter.toLowerCase());
+
+        if (hasLowercase) System.out.println("lower-case");
+        if(hasUppercase) System.out.println("upper-case");
+
+    }
+}

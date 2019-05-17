@@ -1,0 +1,33 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class SoftuniBarincome {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String input ="";
+        double totalIncome = 0;
+        while(!"end of shift".equalsIgnoreCase(input= reader.readLine())){
+            Pattern reg = Pattern.compile("%(?<customer>[A-Z][a-z]+)%(?:[^|$%.]*)<(?<product>[^<>]+)>(?:[^$%.]*)\\|(?<count>\\d+)\\|(?:[^|$%.]*?)(?<price>[-+]?\\d+\\.?\\d+)\\$");
+            Matcher matcher = reg.matcher(input);
+            while(matcher.find()){
+                String customer = matcher.group("customer");
+                String products = matcher.group("product");
+                double count = Double.parseDouble(matcher.group("count"));
+                double price = Double.parseDouble(matcher.group("price"));
+                double endPrice = count*price;
+                totalIncome+=endPrice;
+
+                System.out.println(String.format("%s: %s - %.2f",customer,products,endPrice));
+
+            }
+
+
+
+        }
+        System.out.println(String.format("Total income: %.2f",totalIncome));
+    }
+}

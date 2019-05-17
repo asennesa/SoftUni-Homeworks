@@ -1,0 +1,47 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class merg {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        List<Integer> nums = Arrays.stream(reader.readLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> nums1 = Arrays.stream(reader.readLine().split(" ")).map(Integer::parseInt).collect(Collectors.toList());
+        List<Integer> result = new ArrayList<>(nums.size() + nums1.size());
+
+        for (int i = 0; i < Math.min(nums.size(), nums1.size()); i++) {
+            if (nums.size() >= nums1.size()) {
+                result.add(nums.get(i));
+                result.add(nums1.get(i));
+                nums.remove(nums.get(i));
+                nums1.remove(nums1.get(i));
+                i = -1;
+            } else {
+                result.add(nums.get(i));
+                result.add(nums1.get(i));
+                nums.remove(nums.get(i));
+                nums1.remove(nums1.get(i));
+                i = -1;
+
+            }
+
+
+        }
+        if (nums.size() >= nums1.size()) {
+            System.out.print(result.toString().replaceAll("\\[|,|\\]", ""));
+            System.out.print(" ");
+            System.out.print(nums.toString().replaceAll("\\[|,|\\]", ""));
+
+        } else {
+            System.out.print(result.toString().replaceAll("\\[|,|\\]", ""));
+            System.out.print(" ");
+            System.out.print(nums1.toString().replaceAll("\\[|,|\\]", ""));
+        }
+
+
+    }
+}

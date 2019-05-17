@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class common {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        String[] first = reader.readLine().split(" ");
+        String[] second = reader.readLine().split(" ");
+        String[] result = new String[first.length];
+
+
+        for (int i = 0; i<first.length;i++) {
+            for (String j : second) {
+                if (first[i].equals(j)) {
+                    result[i]=first[i];
+
+                }
+            }
+        }
+        for (String k :result){
+            if (k != null){
+                System.out.print(k+" ");
+            }
+
+        }
+        /*
+        AKO
+        first[i] E RAVNO NA second[0]
+        go zapazi v result arei
+
+
+
+
+
+
+
+
+        */
+
+    }
+}

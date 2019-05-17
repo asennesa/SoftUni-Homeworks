@@ -1,0 +1,31 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class fieldsboy {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        int yield = java.lang.Integer.parseInt(reader.readLine());
+        int notOriginal= yield;
+        int dayCount = 0;
+        int extracted = 0;
+
+        while (yield >= 100){
+            notOriginal-= 26;
+            dayCount+=1;
+            extracted+=notOriginal;
+            yield -=10;
+            if(dayCount >0){
+                notOriginal = yield;
+            }
+        }
+        if (extracted >=26){
+            extracted=extracted-26;
+        }
+        System.out.println(dayCount);
+        System.out.println(extracted);
+
+
+    }
+}

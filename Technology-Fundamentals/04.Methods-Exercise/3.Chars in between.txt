@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+        import java.io.IOException;
+        import java.io.InputStreamReader;
+
+public class charInRange {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        char one = reader.readLine().charAt(0);
+        char two = reader.readLine().charAt(0);
+        inRange(one,two);
+
+
+    }
+    static void inRange(char one,char two){
+        if (one < two){
+            for (int i = one+1; i < two;i++ ){
+                char c = (char)i;
+                System.out.print(c+" ");
+            }
+        }else{
+            for (int i = two+1; i < one;i++ ){
+                char c = (char)i;
+                System.out.print(c+" ");
+            }
+        }
+
+    }
+}

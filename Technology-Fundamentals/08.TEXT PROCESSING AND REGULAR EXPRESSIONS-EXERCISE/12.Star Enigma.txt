@@ -1,0 +1,73 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class starEnigma {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(reader.readLine());
+        String length = "";
+        int attCount = 0;
+        int destCount = 0;
+        Set<String>attackedPlanets = new TreeSet<>();
+        Set<String>destroiedPlanets = new TreeSet<>();
+
+
+
+        for (int i = 0; i < n; i++) {
+            String code = reader.readLine();
+            StringBuilder quant= new StringBuilder(length);
+            StringBuilder sb = new StringBuilder(code);
+            Pattern reg = Pattern.compile("[star]+",Pattern.CASE_INSENSITIVE);
+            Matcher matcher=reg.matcher(code);
+            while (matcher.find()){
+                 quant.append(matcher.group());
+            }
+            for (int j = 0; j < sb.length(); j++) {
+                char currentChar = sb.charAt(j);
+                int charValue = (int) currentChar - quant.length();
+                char shifterChar = (char) charValue;
+                String strvalue = String.valueOf(shifterChar);
+                sb.replace(j, j + 1, strvalue);
+            }
+
+
+            String deciphered = sb.toString();
+            length="";
+
+            Pattern regx= Pattern.compile("@(?<planet>[A-Za-z]+)(?:[^@\\-!:>]*?):(?:[^@\\-!:>]*?)" +
+                    "(?<population>\\d+)(?:[^@\\-!:>]*?)!(?:[^@\\-!:>]*?)" +
+                    "(?<attType>[A|D])(?:[^@\\-!:>]*?)!(?:[^@\\-!:>]*?)->(?:[^@\\-!:>]*?)" +
+                    "(?<soldiers>\\d+)");
+            Matcher matcher1 =regx.matcher(deciphered);
+
+            while(matcher1.find()) {
+                if (matcher1.group("attType").equals("A")) {
+                    attCount += 1;
+                    attackedPlanets.add("-> " + matcher1.group("planet"));
+                } else if (matcher1.group("attType").equals("D")) {
+                    destCount += 1;
+                    destroiedPlanets.add("-> " + matcher1.group("planet"));
+                }
+            }
+        }
+
+            System.out.println(String.format("Attacked planets: %d",attCount));
+                attackedPlanets.stream().forEach(e->{
+                    System.out.println(e);
+                });
+            System.out.println(String.format("Destroyed planets: %d",destCount));
+                destroiedPlanets.stream().forEach(e->{
+                    System.out.println(e);
+                });
+
+
+
+    }
+}

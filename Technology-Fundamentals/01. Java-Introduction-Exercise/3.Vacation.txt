@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class Vacation {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int quant = Integer.parseInt(scanner.nextLine());
+        String type = scanner.nextLine();
+        String day = scanner.nextLine();
+        double total =0;
+
+        if (type.equalsIgnoreCase("students")){
+            if(day.equalsIgnoreCase("Friday")) total = quant*8.45;
+            if(day.equalsIgnoreCase("Saturday")) total = quant*9.80;
+            if(day.equalsIgnoreCase("Sunday")) total = quant*10.46;
+            if (quant >= 30){
+                double discount = total-(total*0.15);
+                System.out.printf("Total price: %.2f",discount);
+            }else{
+                System.out.printf("Total price: %.2f",total);
+            }
+        }
+        if (type.equalsIgnoreCase("Business")){
+            if (quant >= 100) {
+                quant = quant-10;
+                if (day.equalsIgnoreCase("Friday")) total = quant * 10.90;
+                if (day.equalsIgnoreCase("Saturday")) total = quant * 15.60;
+                if (day.equalsIgnoreCase("Sunday")) total = quant * 16;
+                System.out.printf("Total price: %.2f",total);
+            }else{
+                if (day.equalsIgnoreCase("Friday")) total = quant * 10.90;
+                if (day.equalsIgnoreCase("Saturday")) total = quant * 15.60;
+                if (day.equalsIgnoreCase("Sunday")) total = quant * 16;
+                System.out.printf("Total price: %.2f",total);
+
+            }
+
+        }
+        if (type.equalsIgnoreCase("Regular")){
+            if(day.equalsIgnoreCase("Friday")) total = quant*15;
+            if(day.equalsIgnoreCase("Saturday")) total = quant*20;
+            if(day.equalsIgnoreCase("Sunday")) total = quant*22.50;
+            if (quant >= 10 && quant<=20){
+                double discount = total-(total*0.05);
+                System.out.printf("Total price: %.2f",discount);
+            }else{
+                System.out.printf("Total price: %.2f",total);
+            }
+        }
+    }
+}

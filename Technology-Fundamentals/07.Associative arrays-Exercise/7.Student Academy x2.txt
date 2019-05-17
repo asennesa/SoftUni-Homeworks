@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+
+public class StudentAcademy {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        LinkedHashMap<String, List<Double>>studentGrades = new LinkedHashMap<>();
+        int n = Integer.parseInt(reader.readLine());
+
+        for (int i = 0; i < n; i++) {
+            String name = reader.readLine();
+            double grade = Double.parseDouble(reader.readLine());
+            if(!studentGrades.containsKey(name)){
+                studentGrades.put(name,new ArrayList<>());
+                studentGrades.get(name).add(grade);
+            }else{
+                studentGrades.get(name).add(grade);
+            }
+        }
+        studentGrades.forEach((key, value) -> {
+            double average = value.stream().mapToDouble(b -> b).average().orElse(0.0);
+            value.removeAll(value);
+            value.add(average);
+
+        });
+        studentGrades.entrySet().stream().sorted((e1,e2)->{
+            int sort = Double.compare(e2.getValue().get(0),e1.getValue().get(0));
+            return sort;
+        }).forEach(e->{
+            if(e.getValue().get(0)>=4.50) {
+                System.out.println(String.format("%s -> %.2f", e.getKey(), e.getValue().get(0)));
+            }
+        });
+
+
+    }
+}

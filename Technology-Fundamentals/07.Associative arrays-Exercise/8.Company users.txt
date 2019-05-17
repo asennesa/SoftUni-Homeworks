@@ -1,0 +1,41 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
+
+public class Company {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String input;
+        LinkedHashMap<String, LinkedHashSet<String>> companyAndId = new LinkedHashMap<>();
+
+        while(!"End".equalsIgnoreCase(input=reader.readLine())){
+            String[] split = input.split(" -> ");
+            String company = split[0];
+            String employId =split[1];
+
+            if(!companyAndId.containsKey(company)) {
+                companyAndId.put(company, new LinkedHashSet<>());
+
+            }
+
+            companyAndId.get(company).add(employId);
+
+        }
+
+        companyAndId.entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry::getKey))
+                .forEach(entry->{
+                    System.out.println(entry.getKey());
+                    entry.getValue()
+                            .forEach(e -> System.out.printf("-- %s%n", e));
+
+
+                });
+
+
+
+
+    }
+}

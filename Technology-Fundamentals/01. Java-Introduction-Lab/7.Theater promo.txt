@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class simpleifelse {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String day = scanner.nextLine();
+        int age = Integer.parseInt(scanner.nextLine());
+
+        if (day.equalsIgnoreCase("weekday")){
+            if (age >= 0 && age <= 18){
+                System.out.println("12$");
+            }else if (age>=19 && age <=64){
+                System.out.println("18$");
+            }else if (age >= 65 && age <= 122){
+                System.out.println("12$");
+            }else if (age < 0 || age > 122){
+                System.out.println("Error!");
+            }
+        }
+        if (day.equalsIgnoreCase("weekend")){
+            if (age >= 0 && age <= 18){
+                System.out.println("15$");
+            }else if (age>=19 && age <=64){
+                System.out.println("20$");
+            }else if (age >= 65 && age <= 122){
+                System.out.println("15$");
+            }else if (age < 0 || age > 122){
+                System.out.println("Error!");
+            }
+        }
+        if (day.equalsIgnoreCase("holiday")){
+            if (age >= 0 && age <= 18){
+                System.out.println("5$");
+            }else if (age>=19 && age <=64){
+                System.out.println("12$");
+            }else if (age >= 65 && age <= 122){
+                System.out.println("10$");
+            }else if (age < 0 || age > 122){
+                System.out.println("Error!");
+            }
+        }
+    }
+}

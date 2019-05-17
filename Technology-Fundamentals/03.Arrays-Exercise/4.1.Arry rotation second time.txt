@@ -1,0 +1,28 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
+public class arrayRotation {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int[] arr = Arrays.stream(reader.readLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
+        int rotations = Integer.parseInt(reader.readLine());
+        int[]arr2 = new int[arr.length];
+
+        for (int i = 0; i < rotations; i++) {
+            int firstElement =arr[0];
+            for (int j = 0; j < arr.length-1; j++) {
+                 arr2[j]=arr[j+1];
+
+                }
+            arr2[arr.length-1]=firstElement;
+            arr=arr2;
+            }
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(arr[i]+" ");
+        }
+
+        }
+    }
+

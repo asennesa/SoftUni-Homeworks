@@ -1,0 +1,29 @@
+import java.util.Scanner;
+
+public class time {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        double hours = Double.parseDouble(scanner.nextLine());
+        double minutes = Double.parseDouble(scanner.nextLine());
+        double minsPlus = 30;
+
+        double sumMins = minutes + minsPlus;
+
+        if (sumMins > 59) {
+            hours += 1;
+            sumMins -= 60;
+
+        }
+        if (hours == 24) {
+            hours = 0;
+        }
+        if (sumMins < 10) {
+            System.out.printf("%.0f:0%.0f", hours, sumMins);
+
+        }else{
+            System.out.printf("%.0f:%.0f", hours, sumMins);
+
+        }
+    }
+}

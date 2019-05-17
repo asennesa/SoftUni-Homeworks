@@ -1,0 +1,42 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class sumOfOddsAndEvens {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        int num =Math.abs(Integer.parseInt(reader.readLine()));
+        int result = 0;
+        System.out.println(sum(num));
+    }
+    static int sum(int num){
+        int evenSum=findEven(num);
+        int oddSum = findOdd(num);
+        return evenSum*oddSum;
+
+    }
+    static int findOdd(int num){
+        int oddSum= 0;
+        while (num >0){
+            int digit = num%10;
+            if (digit%2 ==1){
+                oddSum+=digit;
+            }
+            num=num/10;
+        }
+        return oddSum;
+    }
+    static int findEven(int num){
+        int evenSum= 0;
+        while (num >0){
+            int digit = num%10;
+            if (digit%2 ==0){
+                evenSum+=digit;
+            }
+            num=num/10;
+        }
+        return evenSum;
+
+    }
+
+}

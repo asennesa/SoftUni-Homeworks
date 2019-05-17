@@ -1,0 +1,27 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class oncemore {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        String regex = "\\+359([- ])2\\1[\\d3]{3}\\1[\\d]{4}\\b";
+        String input = reader.readLine(); //Vzimash cql string.
+        List<String> numbersValid = new ArrayList<>();
+
+
+        Pattern pattern = Pattern.compile(regex); //Izpolzva regex stringa kato shablon.
+        Matcher matcher = pattern.matcher(input); // Tursi suvpadenie na chasti ot stringa sus shablona.
+
+        while(matcher.find()){
+        numbersValid.add(matcher.group());
+
+        }
+        System.out.println(numbersValid.toString().replaceAll("\\[|\\]", ""));
+    }
+}

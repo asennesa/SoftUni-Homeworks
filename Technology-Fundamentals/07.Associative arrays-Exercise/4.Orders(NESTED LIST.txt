@@ -1,0 +1,34 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Orders {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        Map<String, List<Double>> products = new LinkedHashMap<>();
+
+        String input ="";
+        while(!"buy".equalsIgnoreCase(input=reader.readLine())){
+            String[] split = input.split("\\s+");
+            String product = split[0];
+            double price = Double.valueOf(split[1]);
+            double quantity = Double.valueOf(split[2]);
+
+            if(!products.containsKey(product)){
+                products.put(product,new ArrayList<>());
+                products.get(product).add(price);
+                products.get(product).add(quantity);
+            }else{
+                products.get(product).set(0,price);
+                products.get(product).set(1,products.get(product).get(1)+quantity);
+            }
+
+        }
+        products.forEach((key,value)-> System.out.println(String.format("%s -> %.2f",key,value.get(0)*value.get(1))));
+    }
+}
