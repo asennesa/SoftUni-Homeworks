@@ -15,7 +15,11 @@ public class BalancedParentheses {
             if (current == '[' || current == '{' || current == '(') {
                 stack.push(current);
             } else {
-                char topElement = stack.pop();
+                if (stack.isEmpty()){
+                    areBalanced=false;
+                    break;
+                }
+                 char topElement = stack.pop();
                 if (current == ']' && topElement != '[') {
                     areBalanced = false;
                     break;
