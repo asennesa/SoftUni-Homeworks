@@ -10,42 +10,42 @@ public class VoinaNumberGame {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        Set<Integer>firstPlayer = getPlayerCards(reader.readLine());
+        Set<Integer> firstPlayer = getPlayerCards(reader.readLine());
 
-        Set<Integer>secondPlayer = getPlayerCards(reader.readLine());
+        Set<Integer> secondPlayer = getPlayerCards(reader.readLine());
         for (int round = 0; round < 50; round++) {
-            if(firstPlayer.isEmpty()|| secondPlayer.isEmpty()) break;
+            if (firstPlayer.isEmpty() || secondPlayer.isEmpty()) break;
             // Iterator gives the next element if there is one.
-            Iterator<Integer>firstPlayerIterate = firstPlayer.iterator();
-            Iterator<Integer>secondPlayerIterate = secondPlayer.iterator();
+            Iterator<Integer> firstPlayerIterate = firstPlayer.iterator();
+            Iterator<Integer> secondPlayerIterate = secondPlayer.iterator();
             int firstPlayerValue = firstPlayerIterate.next();
             firstPlayer.remove(firstPlayerValue);
             int secondPlayerValue = secondPlayerIterate.next();
             secondPlayer.remove(secondPlayerValue);
 
-            if(firstPlayerValue>secondPlayerValue){
+            if (firstPlayerValue > secondPlayerValue) {
                 firstPlayer.add(firstPlayerValue);
                 firstPlayer.add(secondPlayerValue);
-            }else if(firstPlayerValue< secondPlayerValue){
+            } else if (firstPlayerValue < secondPlayerValue) {
                 secondPlayer.add(firstPlayerValue);
                 secondPlayer.add(secondPlayerValue);
-            }else{
+            } else {
                 firstPlayer.add(firstPlayerValue);
                 secondPlayer.add(secondPlayerValue);
 
             }
         }
-        if(firstPlayer.size()>secondPlayer.size()){
+        if (firstPlayer.size() > secondPlayer.size()) {
             System.out.println("First player win!");
-        }else if(secondPlayer.size()>firstPlayer.size()){
+        } else if (secondPlayer.size() > firstPlayer.size()) {
             System.out.println("Second player win!");
-        }else{
+        } else {
             System.out.println("Draw!");
         }
     }
 
-     static LinkedHashSet<Integer> getPlayerCards(String line) {
-        LinkedHashSet<Integer>result = new LinkedHashSet<>();
+    static LinkedHashSet<Integer> getPlayerCards(String line) {
+        LinkedHashSet<Integer> result = new LinkedHashSet<>();
         Arrays.stream(line.split("\\s+"))
                 .mapToInt(Integer::parseInt)
                 .forEach(result::add);
