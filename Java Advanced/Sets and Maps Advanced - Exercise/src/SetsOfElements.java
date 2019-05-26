@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
-public class SetsofElements {
+public class SetsOfElements {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int[] nm = Arrays.stream(reader.readLine().split("\\s+")).mapToInt(Integer::parseInt).toArray();
