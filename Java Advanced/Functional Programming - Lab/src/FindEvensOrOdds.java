@@ -4,7 +4,7 @@ import java.io.InputStreamReader;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 
-public class FindEvensorOdds {
+public class FindEvensOrOdds {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         Predicate<Integer> filterEven = x -> x % 2 == 0;
