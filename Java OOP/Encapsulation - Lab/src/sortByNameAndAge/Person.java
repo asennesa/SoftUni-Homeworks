@@ -1,4 +1,4 @@
-package person;
+package sortByNameAndAge;
 
 public class Person {
     private String firstName;
