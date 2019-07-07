@@ -1,4 +1,4 @@
-package ValidationData;
+package validationData;
 
 public class Person {
     private String firstName;
