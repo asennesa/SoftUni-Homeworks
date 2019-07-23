@@ -1,6 +1,6 @@
 package wildFarm.animals;
 
-public class Tiger extends Felime {
+public class    Tiger extends Felime {
     private String livingRegion;
 
     public Tiger(String animalName, String animalType, double animalWeight, String livingRegion) {

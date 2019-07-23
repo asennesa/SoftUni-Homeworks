@@ -2,7 +2,6 @@ package wildFarm.animals;
 
 import wildFarm.foods.Food;
 
-import java.text.DecimalFormat;
 
 public abstract class Animal {
     private String animalName;

@@ -1,8 +1,6 @@
-package gettersAndSetters;
-
 import java.io.Serializable;
 
-public  class Reflection implements Serializable {
+public class Reflection implements Serializable {
 
     private static final String nickName = "Pinguin";
     public String name;
