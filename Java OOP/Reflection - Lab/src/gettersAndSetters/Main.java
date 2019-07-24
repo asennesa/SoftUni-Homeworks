@@ -1,10 +1,12 @@
+import com.sun.jdi.Value;
+
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Comparator;
 
 public class Main {
     public static void main(String[] args) {
-        Reflection reflection = new Reflection();
+        /*Reflection reflection = new Reflection();
         Class getMethods = Reflection.class;
         Method[] declaredMethods = getMethods.getDeclaredMethods();
 
@@ -14,7 +16,12 @@ public class Main {
 
         Arrays.stream(declaredMethods)
                 .filter(e -> e.getName().startsWith("set") && e.getParameterCount() == 1).sorted(Comparator.comparing(Method::getName))
-                .forEach(e -> System.out.println(String.format("%s and will set field of class %s", e.getName(), e.getParameterTypes()[0].getName())));
+                .forEach(e -> System.out.println(String.format("%s and will set field of class %s", e.getName(), e.getParameterTypes()[0].getName())));*/
+
+        @Min()
+        int asd;
+
+        System.out.println(asd);
 
 
     }
