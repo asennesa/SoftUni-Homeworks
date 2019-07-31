@@ -24,6 +24,9 @@ public abstract class Hardware extends SystemSplit {
         this.softwareList = new ArrayList<>();
     }
 
+    public String getType() {
+        return type;
+    }
 
     public int getMaximumCapacity() {
         return this.maximumCapacity;
