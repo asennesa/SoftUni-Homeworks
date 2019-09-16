@@ -4,6 +4,8 @@ import systemSplit.hardware.PowerHardware;
 
 public class Main {
     public static void main(String[] args) {
+
+        //Workshop.
         SystemSplit systemSplit = new SystemSplit();
 
         systemSplit.RegisterPowerHardware("HDD", 200, 200);
